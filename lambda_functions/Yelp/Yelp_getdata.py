@@ -4,9 +4,9 @@ import boto3
 import datetime
 
 
-business_id = "IDN5GMP_DUlEXEY00HPdODSw"
+business_id = "***"
 
-API_KEY =  "UzMcv9gEnfWB_dzje80ERgC40gtD0hgfXMzC3TlSQB2sSB2vwDl9rGGmLVy3lEsBdP_CU0Q_xynZxFiWBmYg6ppdCpatoH76STvbDq-Q9Vbfqn_Dm3YGN3chMitCY3Yx"
+API_KEY =  "*****"
 ENDPOINT = "https://api.yelp.com/v3/businesses/search"
 HEADERS = {'Authorization':"bearer %s" % API_KEY}
 
