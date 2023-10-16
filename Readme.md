@@ -1,4 +1,5 @@
-This is a Dining Concierge Assistant. It's a serverless, microservice-driven web app.
+This is a Dining Concierge Assistant. 
+It's a serverless, microservice-driven web app.
 
 We build a Dining Concierge Assistant using Amazon Lex. We use Yelp API to get 5000+ random restaurants from Manhattan and store them in DynamoDB. The Assistant will use OpenSearch to find its recommendations for you. The message will be sent to your email address. 
 
