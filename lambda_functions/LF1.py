@@ -189,7 +189,7 @@ def suggestion(event):
             #SQS to be continued
             sqs = boto3.client('sqs')
             sqs.send_message(
-                QueueUrl="https://sqs.us-east-1.amazonaws.com/742929579116/Q1",
+                QueueUrl="https://sqs.us-east-1.amazonaws.com/******/Q1",
                 MessageBody=json.dumps(slots)
             )
             
