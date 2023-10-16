@@ -13,8 +13,8 @@ def lambda_handler(event, context):
 
     # Initiate conversation with Lex
     response = client.recognize_text(
-            botId='OTVKIE2FW3', # MODIFY HERE
-            botAliasId='S18WIAZRKL', # MODIFY HERE
+            botId='***', # MODIFY HERE
+            botAliasId='***', # MODIFY HERE
             localeId='en_US',
             sessionId='testuser',
             text=msg_from_user)
