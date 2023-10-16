@@ -12,7 +12,7 @@ import random
 
 
 def receive_sqs():
-    url="https://sqs.us-east-1.amazonaws.com/742929579116/Q1"
+    url="https://sqs.us-east-1.amazonaws.com/***/Q1"
     response = boto3.client('sqs').receive_message(QueueUrl=url,
                                                    VisibilityTimeout=60,
                                                    MaxNumberOfMessages=1,
@@ -21,7 +21,7 @@ def receive_sqs():
     return response
 
 def delete_sqs(response):
-    url = "https://sqs.us-east-1.amazonaws.com/742929579116/Q1"
+    url = "https://sqs.us-east-1.amazonaws.com/***/Q1"
     handle = response["Messages"][0]['ReceiptHandle']
 
     boto3.client('sqs').delete_message(QueueUrl=url, ReceiptHandle=handle)
@@ -88,7 +88,7 @@ def send_ses(message, email):
     # create a new SES resource
     client = boto3.client("ses")
     # sender and recipient for testing
-    sender = "jd3868@columbia.edu"
+    sender = "***@***.***" #email
     charset = "utf-8"
     # try to send the email
     try:
@@ -149,7 +149,7 @@ def lambda_handler(event, context):
     awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, 
                 region, service, session_token=credentials.token)
     
-    host = 'https://search-restaurants-lu4xnyoc5bodnm5kou7oixlih4.us-east-1.es.amazonaws.com'
+    host = 'https://*****.us-east-1.es.amazonaws.com'
     
     index = 'restaurants'
     url = host + '/' + index + '/_search'
@@ -183,7 +183,6 @@ def lambda_handler(event, context):
     
     email_content = f"Hello! Here are my {cuisine} restaurant suggestions for {user_request['Number_of_people']['value']['interpretedValue']} people, for {user_request['Date']['value']['interpretedValue']} at {user_request['Dining_time']['value']['interpretedValue']}: 1. {target[0]['Name']}, located at {target[0]['Address']}, 2. {target[1]['Name']}, located at {target[1]['Address']}, 3. {target[2]['Name']}, located at {target[2]['Address']}. Enjoy your meal!"
     
-    #send_ses(email_content+'\n'+hist,'jd3868@columbia.edu') #for test only
     send_ses(email_content+'\n'+hist,user_request['Phone_number']['value']['interpretedValue'])
     
     
